@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
+	default-lazy-init="false">
+
+	<!-- 数据库连接配置 -->
+	<bean id="petstore-dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+
+		<property name="url">
+			<value>${petsotre-datasource-url}</value>
+		</property>
+		
+		<!-- 初始化连接数量 -->
+		<property name="initialSize" value="${petsotre-datasource-initialSize}" />
+		<!-- 最小连接数量 -->
+		<property name="minIdle" value="${petsotre-datasource-minIdle}" />
+		<!-- 最大连接数量 -->
+		<property name="maxActive" value="${petsotre-datasource-maxActive}" />
+
+		<!-- Druid连接池扩展插件配置，其中stat用于监控统计，wall用于防御SQL注入攻击 -->
+		<property name="filters" value="stat,wall" />
+		
+		<property name="testOnBorrow" value="false" />
+		<property name="testWhileIdle" value="true" />
+		<property name="validationQuery" value="select 'x'" />
+	</bean>
+
+	<!-- 事务配置  -->
+	<bean id="txManager-petstore"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="petstore-dataSource" />
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager-petstore" proxy-target-class="true" />
+</beans>

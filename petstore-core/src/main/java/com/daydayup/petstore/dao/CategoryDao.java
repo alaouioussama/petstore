@@ -1,4 +1,4 @@
-package com.github.petstore.dao;
+package com.daydayup.petstore.dao;
 
 public interface CategoryDao {
 
