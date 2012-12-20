@@ -6,6 +6,14 @@
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
 	default-lazy-init="false">
+	
+	<bean id="wall-config" class="com.alibaba.druid.wall.WallConfig">
+		<property name="doPrivilegedAllow" value="true"/>
+	</bean>
+	
+	<bean id="wall-filter" class="com.alibaba.druid.wall.WallFilter">
+		<property name="config" ref="wall-config"/>
+	</bean>
 
 	<!-- 数据库连接配置 -->
 	<bean id="petstore-dataSource" class="com.alibaba.druid.pool.DruidDataSource"
@@ -23,7 +31,12 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 		<property name="maxActive" value="${petsotre-datasource-maxActive}" />
 
 		<!-- Druid连接池扩展插件配置，其中stat用于监控统计，wall用于防御SQL注入攻击 -->
-		<property name="filters" value="stat,wall" />
+		<property name="filters" value="stat" />
+		<property name="proxyFilters">
+			<list>
+				<ref bean="wall-filter" />
+			</list>
+		</property>
 		
 		<property name="testOnBorrow" value="false" />
 		<property name="testWhileIdle" value="true" />

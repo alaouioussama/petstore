@@ -23,6 +23,7 @@ public class DatabaseInitService {
             @Override
             public Object run() {
                 dao.createUserTable();
+                dao.createVisitLogTable();
                 return null;
             }
         });

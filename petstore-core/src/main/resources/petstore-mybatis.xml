@@ -23,5 +23,11 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 		<property name="mapperInterface" value="com.daydayup.petstore.dao.UserMapper" />
 	</bean>
+
 	
+	<bean class="org.mybatis.spring.mapper.MapperFactoryBean"
+		id="petstore-accessLogMapper">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+		<property name="mapperInterface" value="com.daydayup.petstore.dao.AccessLogMapper" />
+	</bean>	
 </beans>

@@ -6,18 +6,10 @@
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd"
 	default-lazy-init="false">
-	<import resource="petstore-dataSource.xml" />
-	<import resource="petstore-mybatis.xml" />
-
-	<bean id="petstore-db-initService" class="com.daydayup.petstore.service.DatabaseInitService">
-		<property name="dao" ref="petstore-db-initMapper" />
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="app.properties" />
 	</bean>
 
-	<bean id="petstore-userService" class="com.daydayup.petstore.service.UserService">
-		<property name="dao" ref="petstore-userMapper" />
-	</bean>
-	
-	<bean id="petstore-accessLogService" class="com.daydayup.petstore.service.AccessLogService">
-		<property name="dao" ref="petstore-accessLogMapper" />
-	</bean>
+	<import resource="petstore-core.xml" />
 </beans>
