@@ -11,7 +11,7 @@ public interface DatabaseInitMapper {
 			")")
 	void createUserTable();
 
-	@Update("CREATE TABLE visit_log (" + //
+	@Update("CREATE TABLE accesslog (" + //
 			"      id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY," + //
 			"      page varchar(256)," + //
 			"      session_id varchar(128)," + //

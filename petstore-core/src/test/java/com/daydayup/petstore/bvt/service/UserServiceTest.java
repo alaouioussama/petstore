@@ -4,6 +4,7 @@ import org.junit.Assert;
 
 import com.daydayup.petstore.BuildVerifyTest;
 import com.daydayup.petstore.entity.User;
+import com.daydayup.petstore.service.AccessLogService;
 import com.daydayup.petstore.service.UserService;
 
 public class UserServiceTest extends BuildVerifyTest {
@@ -18,5 +19,10 @@ public class UserServiceTest extends BuildVerifyTest {
         
         User loadedUser = userService.findUserByName("admin");
         Assert.assertNotNull(loadedUser);
+        
+        {
+        	AccessLogService logService = getBean(AccessLogService.class);
+        	logService.add("", "", "", "");
+        }
     }
 }
