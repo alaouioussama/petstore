@@ -12,6 +12,9 @@ public interface UserMapper {
 
     @Select("SELECT name, password, createTime from user where name = #{name}")
     User findUserByName(@Param("name") String name);
+    
+    @Select("SELECT name, '******' password, createTime from user")
+    List<User> findList();
 
     User getAuthenticatedUser(String userId, String password);
 

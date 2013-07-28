@@ -23,7 +23,7 @@
 		<filter-name>DruidWebStatFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>AccessLogFilter</filter-name>
 		<filter-class>com.daydayup.petstore.AccessLogWebFilter</filter-class>
@@ -36,7 +36,7 @@
 		<filter-name>AccessLogFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<servlet>
 		<servlet-name>DruidStatView</servlet-name>
 		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
@@ -50,5 +50,13 @@
 		<url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
 
-
+	<servlet>
+		<servlet-name>spring-mvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>spring-mvc</servlet-name>
+		<url-pattern>*.json</url-pattern>
+	</servlet-mapping>
 </web-app>
