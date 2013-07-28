@@ -9,7 +9,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	<import resource="classpath:spring/petstore-dataSource.xml" />
 	<import resource="classpath:spring/petstore-mybatis.xml" />
 
-	<bean id="petstore-db-initService" class="com.daydayup.petstore.service.DatabaseInitService">
+	<bean id="petstore-db-initService" class="com.daydayup.petstore.service.DatabaseInitService" autowire="autodetect">
 		<property name="dao" ref="petstore-db-initMapper" />
 	</bean>
 
