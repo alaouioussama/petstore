@@ -31,4 +31,9 @@ public class UserController {
 	public List<User> list() {
 		return service.findList();
 	}
+	
+	@RequestMapping("/add")     
+	public void addUer(User user) {
+		System.out.println();
+	}
 }
