@@ -18,6 +18,8 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
+	private String value;
+
 	public UserService getService() {
 		return service;
 	}
@@ -31,9 +33,18 @@ public class UserController {
 	public List<User> list() {
 		return service.findList();
 	}
-	
-	@RequestMapping("/add")     
+
+	@RequestMapping("/add")
 	public void addUer(User user) {
 		System.out.println();
 	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
 }
