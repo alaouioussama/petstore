@@ -21,8 +21,12 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-
-
+	
+	<!--  
+	<mvc:interceptors>
+		<bean class="com.alibaba.druid.support.spring.mvc.StatHandlerInterceptor" />
+	</mvc:interceptors>
+	-->
 	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="order" value="1" />
 		<property name="mediaTypes">

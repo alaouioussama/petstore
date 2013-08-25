@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.daydayup.petstore.entity.User;
@@ -32,6 +33,16 @@ public class UserController {
 	@ResponseBody
 	public List<User> list() {
 		return service.findList();
+	}
+	
+	@RequestMapping("/listx")
+	public List<User> listx(@RequestParam("x") String x) {
+		return service.findListX(x);
+	}
+
+	@RequestMapping("/item/{name}")
+	public User findUserByName(@RequestParam("name") String name) {
+		return service.findUserByName(name);
 	}
 
 	@RequestMapping("/add")

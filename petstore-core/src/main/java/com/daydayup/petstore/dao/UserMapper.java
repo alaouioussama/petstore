@@ -15,6 +15,9 @@ public interface UserMapper {
     
     @Select("SELECT name, '******' password, createTime from user")
     List<User> findList();
+    
+    @Select("SELECT name, '******' password, createTime from user where name like '${x}'")
+    List<User> findListX(@Param("x") String x);
 
     User getAuthenticatedUser(String userId, String password);
 

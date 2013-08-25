@@ -33,4 +33,8 @@ public class UserService {
 	public List<User> findList() {
 		return dao.findList();
 	}
+	
+	public List<User> findListX(String x) {
+		return dao.findListX(x);
+	}
 }
